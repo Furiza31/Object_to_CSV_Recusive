@@ -12,8 +12,7 @@ function getAll<T extends object> (...objects: T[]) {
 
   function traverse (object: T, parent = '') {
     for (const key in object) {
-      if (rep[key] === undefined) rep[key] = 0
-      else rep[key]++
+      rep[key] === undefined ? rep[key] = 0 : rep[key]++
       const repKey = key + (rep[key] > 0 ? `_${parent}` : '')
       const value = object[key]
       if (typeof value === 'object') {
